@@ -11,8 +11,8 @@ const state = {
         result: 0,
         currentTime: 60,
     },
-    actions:{
-        timerId:  setInterval(randomSquare, 1000),
+    actions: {
+        timerId: setInterval(randomSquare, 1000),
         countDownTimerId: setInterval(countDown, 1000),
     }
 };
@@ -28,7 +28,7 @@ function countDown() {
     }
 }
 
-function playSound(audioName){
+function playSound(audioName) {
     let audio = new Audio(`./src/audios/${audioName}.m4a`);
     audio.volume = 0.2;
     audio.play();
@@ -55,12 +55,14 @@ function addListenerHitBox() {
                 state.values.hitPosition = null;
                 playSound("hit");
             }
+            let bgm = document.getElementById("bgm");
+            bgm.volume = 0.5;
+            bgm.play();
         })
     })
 }
 
 function initialize() {
-    playSound("music");
     addListenerHitBox();
 }
 
